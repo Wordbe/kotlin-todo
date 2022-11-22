@@ -30,6 +30,7 @@ class TodoService(
             title = request.title,
             description = request.description,
             done = request.done,
+            priority = request.priority,
             createdAt = LocalDateTime.now()
         )
         return todoRepository.save(todo)
@@ -40,7 +41,7 @@ class TodoService(
         checkNotNull(request)
 
         return findById(id).apply {
-            update(request.title, request.description, request.done)
+            update(request.title, request.description, request.done, request.priority)
         }
     }
 
