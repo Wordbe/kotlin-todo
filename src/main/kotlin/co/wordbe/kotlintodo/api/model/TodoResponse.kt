@@ -1,6 +1,7 @@
 package co.wordbe.kotlintodo.api.model
 
 import co.wordbe.kotlintodo.domain.Todo
+import co.wordbe.kotlintodo.domain.TodoPriority
 import java.time.LocalDateTime
 
 class TodoResponse(
@@ -8,6 +9,7 @@ class TodoResponse(
     val title: String,
     val description: String,
     val done: Boolean,
+    val priority: TodoPriority,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime?,
 ) {
@@ -21,6 +23,7 @@ class TodoResponse(
                 title = todo.title,
                 description = todo.description,
                 done = todo.done,
+                priority = todo.priority,
                 createdAt = todo.createdAt,
                 updatedAt = todo.updatedAt
             )

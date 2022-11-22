@@ -1,14 +1,15 @@
 package co.wordbe.kotlintodo.domain
 
 import java.time.LocalDateTime
+import java.time.LocalDateTime.now
 import javax.persistence.*
 
 @Entity
 @Table(name = "todos")
-class Todo(
+data class Todo(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = 0,
+    val id: Long? = null,
 
     var title: String,
 
@@ -17,14 +18,21 @@ class Todo(
 
     var done: Boolean,
 
+    @Enumerated(EnumType.STRING)
+    var priority: TodoPriority,
+
     var createdAt: LocalDateTime,
 
     var updatedAt: LocalDateTime? = null,
 ) {
-    fun update(title: String, description: String, done: Boolean) {
+    constructor(priority: TodoPriority, createdAt: LocalDateTime) :
+            this(null, "", "", false, priority, createdAt, null)
+
+    fun update(title: String, description: String, done: Boolean, priority: TodoPriority) {
         this.title = title
         this.description = description
         this.done = done
-        this.updatedAt = LocalDateTime.now()
+        this.priority = priority
+        this.updatedAt = now()
     }
 }
