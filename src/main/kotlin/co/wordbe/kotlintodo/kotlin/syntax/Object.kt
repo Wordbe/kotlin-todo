@@ -1,15 +1,10 @@
 package co.wordbe.kotlintodo.kotlin.syntax
 
-import co.wordbe.kotlintodo.domain.Todo
+import co.wordbe.kotlintodo.domain.TodoFactory
 import co.wordbe.kotlintodo.domain.TodoPriority
-
-object TodoFactory {
-    fun create(priority: TodoPriority): Todo {
-        return Todo(priority)
-    }
-}
+import java.time.LocalDateTime
 
 fun main() {
-    val todo = TodoFactory.create(TodoPriority.HIGH)
+    val todo = TodoFactory.create(TodoPriority.HIGH, LocalDateTime.now())
     println(todo)
 }

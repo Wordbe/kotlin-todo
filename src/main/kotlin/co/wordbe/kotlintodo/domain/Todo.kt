@@ -25,7 +25,8 @@ data class Todo(
 
     var updatedAt: LocalDateTime? = null,
 ) {
-    constructor(priority: TodoPriority): this(null, "", "", false, priority, now(), null)
+    constructor(priority: TodoPriority, createdAt: LocalDateTime) :
+            this(null, "", "", false, priority, createdAt, null)
 
     fun update(title: String, description: String, done: Boolean, priority: TodoPriority) {
         this.title = title
