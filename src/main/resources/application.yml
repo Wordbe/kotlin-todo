@@ -4,3 +4,6 @@ spring:
       hibernate:
         format_sql: true
     show-sql: true
+
+zookeeper:
+  connect-string: 'localhost:2181,localhost:2888,localhost:3888'
