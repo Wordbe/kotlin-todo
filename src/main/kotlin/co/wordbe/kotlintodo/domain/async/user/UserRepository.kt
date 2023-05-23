@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
 
-@Repository
 interface UserAsyncRepository {
     fun findUserByIdAsMaybe(id: Long): Maybe<User>
 }
@@ -18,6 +17,7 @@ open class UserRepositoryBase {
     )
 }
 
+@Repository
 class UserRxRepository: UserRepositoryBase(), UserAsyncRepository {
     companion object {
         const val TIME_DELAY_MS = 5000L

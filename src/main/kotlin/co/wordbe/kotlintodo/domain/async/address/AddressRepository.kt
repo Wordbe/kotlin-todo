@@ -5,7 +5,13 @@ import org.springframework.stereotype.Repository
 import java.util.concurrent.Flow
 
 
-@Repository
 interface AddressAsyncRepository {
     fun findByUserAsPublisher(user: User): Flow.Publisher<Address>
+}
+
+@Repository
+class AddressAsyncRepositoryImpl: AddressAsyncRepository {
+    override fun findByUserAsPublisher(user: User): Flow.Publisher<Address> {
+        return Flow.Publisher {  }
+    }
 }

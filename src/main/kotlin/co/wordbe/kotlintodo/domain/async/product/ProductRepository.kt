@@ -4,7 +4,13 @@ import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
 
 
-@Repository
 interface ProductAsyncRepository {
     fun findByIdsAsFlux(ids: List<Long>): Flux<Product>
+}
+
+@Repository
+class ProductAsyncRepositoryImpl: ProductAsyncRepository {
+    override fun findByIdsAsFlux(ids: List<Long>): Flux<Product> {
+        return Flux.just()
+    }
 }

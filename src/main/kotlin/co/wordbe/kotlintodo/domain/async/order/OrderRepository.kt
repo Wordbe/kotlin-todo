@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository
 import java.util.concurrent.CompletableFuture
 
 
-@Repository
 interface OrderAsyncRepository {
     fun createAsFuture(
         buyer: User,
@@ -16,4 +15,16 @@ interface OrderAsyncRepository {
         stores: List<Store>,
         address: Address,
     ): CompletableFuture<Order>
+}
+
+@Repository
+class OrderAsyncRepositoryImpl: OrderAsyncRepository {
+    override fun createAsFuture(
+        buyer: User,
+        products: List<Product>,
+        stores: List<Store>,
+        address: Address
+    ): CompletableFuture<Order> {
+        return CompletableFuture()
+    }
 }
